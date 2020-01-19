@@ -1,0 +1,62 @@
+﻿@model ControleFaturamentoJnx.Models.Fatura
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Fatura</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DataEmissao" class="control-label"></label>
+                <input asp-for="DataEmissao" class="form-control" />
+                <span asp-validation-for="DataEmissao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipo" class="control-label"></label>
+                <select asp-for="Tipo" class="form-control" >
+                    <option value="NotaFiscal"> NotaFiscal</option>
+                    <option value="Walcher"> Walcher</option>                    
+                </select>
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Numero" class="control-label" ></label>
+                <input asp-for="Numero" class="form-control"  />
+                <span asp-validation-for="Numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroParcelas" class="control-label"></label>
+                <input asp-for="NumeroParcelas" class="form-control" />
+                <span asp-validation-for="NumeroParcelas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorFatura" class="control-label"></label>
+                <input asp-for="ValorFatura" class="form-control" />
+                <span asp-validation-for="ValorFatura" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observacao" class="control-label"></label>
+                <input asp-for="Observacao" class="form-control" />
+                <span asp-validation-for="Observacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cliente" class="control-label"></label>
+                <select asp-for="ClienteID" class ="form-control" asp-items="ViewBag.ClienteID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

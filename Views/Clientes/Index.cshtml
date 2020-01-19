@@ -1,0 +1,123 @@
+﻿@model  IEnumerable<ControleFaturamentoJnx.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+   
+}
+
+<p>
+    <a class="btn btn-success" asp-action="Create"><i class="fa fa-plus"></i> Criar Cliente</a>
+</p>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Clientes</h4>
+                </div>
+                <div class="card-body">
+                        <table id="dtBasicExample" class="table table-bordered table-striped table-hover responsive">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Nome)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Documento)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.NumeroDocumento)
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Telefone)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Endereco.Estado)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Endereco.Cidade)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Endereco.Bairro)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Endereco.Rua)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Endereco.Numero)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Documento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NumeroDocumento)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Telefone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Endereco.Estado)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Endereco.Cidade)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Endereco.Bairro)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Endereco.Rua)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Endereco.Numero)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    
+<script>
+    $(document).ready(function () {
+        $('#dtBasicExample').DataTable({
+            'paging': true,
+            'lengthChange': true,
+            'searching': true,
+            'ordering': true,
+            'autoWidth': false,
+            'scrollX':true,
+            "language": {
+                "lengthMenu": "Exibe _MENU_ Registros por página",
+                "search": "Procurar",
+                "paginate": { "previous": "Retorna", "next": "Avança" },
+                "zeroRecords": "Nada foi encontrado",
+                "info": "Exibindo página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sem registros",
+                "infoFiltered": "(filtrado de _MAX_ regitros totais)"
+            },
+        });
+    });
+</script>
+}

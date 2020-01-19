@@ -1,0 +1,93 @@
+﻿@using ControleFaturamentoJnx.Models
+@model Tuple<Cliente, Endereco>
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<hr />
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Cadastro de Clientes</h4>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Item1.Documento" class="control-label"></label>
+                            <select asp-for="Item1.Documento" class="form-control" name="documento">
+                                <option value="CPF" selected> CPF</option>
+                                <option value="CNPJ"> CNPJ</option>
+                            </select>    
+                            <span asp-validation-for="Item1.Documento" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Item1.NumeroDocumento" class="control-label"></label>
+                            <input asp-for="Item1.NumeroDocumento" name="numerodocumento" class="form-control" />
+                            <span asp-validation-for="Item1.NumeroDocumento" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Item1.Nome" class="control-label"></label>
+                            <input asp-for="Item1.Nome" name="nome" class="form-control" required />
+                            <span asp-validation-for="Item1.Nome" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Item1.Telefone" class="control-label"></label>
+                            <input asp-for="Item1.Telefone" name="telefone" class="form-control" required />
+                            <span asp-validation-for="Item1.Telefone" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label asp-for="Item2.Estado" class="control-label"></label>
+                            <input asp-for="Item2.Estado" name="estado" class="form-control" />
+                            <span asp-validation-for="Item2.Estado" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="Item2.Cidade" class="control-label"></label>
+                            <input asp-for="Item2.Cidade" name="cidade" class="form-control" />
+                            <span asp-validation-for="Item2.Cidade" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="Item2.Bairro" class="control-label"></label>
+                            <input asp-for="Item2.Bairro" name="bairro" class="form-control" />
+                            <span asp-validation-for="Item2.Bairro" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="Item2.Rua" class="control-label"></label>
+                            <input asp-for="Item2.Rua" name="rua" class="form-control" />
+                            <span asp-validation-for="Item2.Rua" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Item2.Cep" class="control-label"></label>
+                            <input asp-for="Item2.Cep" name="cep" class="form-control" />
+                            <span asp-validation-for="Item2.Cep" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Item2.Numero" class="control-label"></label>
+                            <input asp-for="Item2.Numero" name="numero" class="form-control" />
+                            <span asp-validation-for="Item2.Numero" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar a lista</a>
+</div>
+
+

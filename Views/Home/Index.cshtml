@@ -1,0 +1,199 @@
+﻿@{
+    ViewData["Title"] = "HomePage";
+}
+
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-money-coins text-success"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category">Faturamento</p>
+                                <p class="card-title">R$ @ViewBag.FaturamentoTotal
+                                <p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-money-coins text-danger"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category">Saida</p>
+                                <p class="card-title">R$ @ViewBag.DespesaTotal
+                                <p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-chart-bar-32 text-warning"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category">Saldo</p>
+                                <p class="card-title">R$ @ViewBag.Lucro
+                                <p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-check-2 text-success"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category">Recebidos/Mês</p>
+                                <p class="card-title">R$ @ViewBag.ParcelaMesPago
+                                <p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-money-coins text-warning"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category">A receber/Mês</p>
+                                <p class="card-title">R$ @ViewBag.ParcelaMesPendente
+                                <p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-simple-remove text-danger"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category">Parcelas Vencidas/Mês</p>
+                                <p class="card-title">@ViewBag.ParcelasVencidasMes
+                                <p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>   
+    <div class="row m-3">        
+        <div class="col-lg-6 col-md-8 col-sm-8">
+            <div class="card card-stats">
+                <div class="card-header">
+                    <h5 class="card-title">Gerar Relatorio Do Caixa</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <form asp-action="RelatorioCaixa">
+                        <div class="form-row">
+                            <div class=" form-group col-md-5">
+                                <label>Data Inicial</label>
+                                <input type="date" name="DataInicial" />
+                            </div>
+
+                            <div class="form-group col-md-5">
+                                <label>Data Final</label>
+                                <input type="date" name="DataFinal" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Gerar" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+         </div>          
+        <div class="col-lg-6 col-md-8 col-sm-8">
+            <div class="card card-stats">
+                <div class="card-header">
+                    <h5 class="card-title">Gerar Relatorio De Parcelas</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <form asp-action="RelatorioParcela">
+                        <div class="form-row">
+                            <div class=" form-group col-md-5">
+                                <label>Data Inicial</label>
+                                <input type="date" name="DataInicial" />
+                            </div>
+
+                            <div class="form-group col-md-5">
+                                <label>Data Final</label>
+                                <input type="date" name="DataFinal" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Gerar" class="btn btn-primary" />
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+                
+        </div>       
+        
+    </div>  
+        
+    
+
+

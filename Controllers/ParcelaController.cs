@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ControleFaturamentoJnx.Data;
 using ControleFaturamentoJnx.Models;
+using ControleFaturamentoJnx.Views.Shared.Enum;
 
 namespace ControleFaturamentoJnx.Views
 {
@@ -22,7 +23,29 @@ namespace ControleFaturamentoJnx.Views
         // GET: Parcela
         public async Task<IActionResult> Index()
         {
-            var controleFaturamentoContext = _context.Parcelas.Include(p => p.Fatura).AsNoTracking().OrderBy(p=>p.Vencimento.Date);
+            var controleFaturamentoContext =  _context.Parcelas.Include(p => p.Fatura).AsNoTracking()
+                                                                    .OrderBy(p=>p.Vencimento.Date.Day)
+                                                                    .OrderBy(p=>p.Vencimento.Date.Month)
+                                                                    .OrderBy(p=>p.Vencimento.Date.Year)
+                                                                    ;
+
+
+            List<Parcela> parcelasVencidas = _context.Parcelas.ToList();
+
+
+            foreach (Parcela p in parcelasVencidas)
+            {
+                if (p.Vencimento<DateTime.Now && 
+                    p.Status.Equals( StatusEnum.Pagamento.Pendente.ToString()))
+                {
+                    p.Status = StatusEnum.Pagamento.Vencido.ToString();
+                    _context.Update(p);
+                    await _context.SaveChangesAsync();
+                }
+                
+            }
+
+            _context.SaveChangesAsync();
             return View(await controleFaturamentoContext.ToListAsync());
         }
 
@@ -152,6 +175,20 @@ namespace ControleFaturamentoJnx.Views
             return RedirectToAction(nameof(Index));
         }
 
+        public async void  ChangeStatus( Parcela parcela)
+        {     
+           
+
+            if (ModelState.IsValid )
+            {
+                
+                    _context.Update(parcela);
+                   await _context.SaveChangesAsync();                              
+                
+            }
+           
+            
+        }
         private bool ParcelaExists(int id)
         {
             return _context.Parcelas.Any(e => e.ID == id);

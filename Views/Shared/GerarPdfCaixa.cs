@@ -66,10 +66,13 @@ namespace ControleFaturamentoJnx.Views.Shared.Enum
             
             var fonteConteudo = new PdfSharpCore.Drawing.XFont("Arial", 10);
             var corFonte = PdfSharpCore.Drawing.XBrushes.Black;
-            
-                          
-                textFormatter.DrawString(item.Numero.ToString(), fonteConteudo, corFonte, new PdfSharpCore.Drawing.XRect(
-                                    30, Altura, Page.Width, Page.Height));
+
+                if (item.Numero != null)
+                {
+                    textFormatter.DrawString(item.Numero.ToString(), fonteConteudo, corFonte, new PdfSharpCore.Drawing.XRect(
+                                        30, Altura, Page.Width, Page.Height));
+                 }      
+                
                 textFormatter.DrawString("R$ " + item.ValorFatura.ToString() + ",00", fonteConteudo, corFonte, new PdfSharpCore.Drawing.XRect(
                                     100, Altura, Page.Width, Page.Height));
                 textFormatter.DrawString(item.DataEmissao.Date.ToString("d"), fonteConteudo, corFonte, new PdfSharpCore.Drawing.XRect(

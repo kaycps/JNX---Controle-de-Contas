@@ -45,7 +45,7 @@ namespace ControleFaturamentoJnx.Views
                 
             }
 
-            _context.SaveChangesAsync();
+            //_context.SaveChangesAsync();
             return View(await controleFaturamentoContext.ToListAsync());
         }
 

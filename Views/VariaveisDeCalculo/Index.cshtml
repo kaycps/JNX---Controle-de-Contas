@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ControleFaturamentoJnx.Models.VariaveisDeCalculo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Confins)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fgts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inss)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComissaoVendedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Icms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FreteVenda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FreteCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProducaoMensal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Confins)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fgts)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inss)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComissaoVendedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Icms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FreteVenda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FreteCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProducaoMensal)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

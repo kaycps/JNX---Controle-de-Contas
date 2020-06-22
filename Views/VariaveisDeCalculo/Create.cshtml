@@ -1,0 +1,103 @@
+﻿@model ControleFaturamentoJnx.Models.VariaveisDeCalculo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<hr />
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h6 class="card-title ">Variaves</h6>
+            </div>         
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>                    
+                    <div class="form-row">
+                        <div class="card col-md-4 m-2">
+                            <div class="card-header">
+                                <h6 class="card-title">Imposto - %</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <input asp-for="Pis" class="form-control" placeholder="Pis" />
+                                        <span asp-validation-for="Pis" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input asp-for="Confins" class="form-control" placeholder="Confins" />
+                                        <span asp-validation-for="Confins" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-4">
+                                        <input asp-for="Fgts" class="form-control" placeholder="Fgts" />
+                                        <span asp-validation-for="Fgts" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <input asp-for="Inss" class="form-control" placeholder="Inss" />
+                                        <span asp-validation-for="Inss" class="text-danger"></span>
+                                    </div>
+                                </div>                               
+                            </div>
+                        </div> 
+                        
+                        <div class="card col-md-4 m-2">
+                            <div class="card-header">
+                                <h6 class="card-title">Logistica - %</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-5">                                        
+                                        <input asp-for="ComissaoVendedor" class="form-control" placeholder="Comissao"/>
+                                        <span asp-validation-for="ComissaoVendedor" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-md-5">                                        
+                                        <input asp-for="Icms" class="form-control" placeholder="Icms"/>
+                                        <span asp-validation-for="Icms" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-5">                                        
+                                        <input asp-for="FreteVenda" class="form-control" placeholder="Frete Venda" />
+                                        <span asp-validation-for="FreteVenda" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-md-5">                                        
+                                        <input asp-for="FreteCompra" class="form-control" placeholder="Frete Compra"/>
+                                        <span asp-validation-for="FreteCompra" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="form-row">
+                        <div class="card col-md-4 m-2">
+                            <div class="card-header">
+                                <h6 class="card-title">Outros</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input asp-for="ProducaoMensal" class="form-control" placeholder="Prod.KG/Mes" />
+                                        <span asp-validation-for="ProducaoMensal" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>            
+        </div>        
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

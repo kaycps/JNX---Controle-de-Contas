@@ -1,0 +1,103 @@
+﻿@model ControleFaturamentoJnx.Models.PrecoCusto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>PrecoCusto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Peso" class="control-label"></label>
+                <select asp-for="Peso" class="form-control">
+                    <option value="1000"> 1kg</option>
+                    <option value="400"> 400g</option>
+                </select>
+                <span asp-validation-for="Peso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trigo" class="control-label"></label>
+                <input asp-for="Trigo" class="form-control" />
+                <span asp-validation-for="Trigo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Embalagem" class="control-label"></label>
+                <input asp-for="Embalagem" class="form-control" />
+                <span asp-validation-for="Embalagem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Caixa" class="control-label"></label>
+                <input asp-for="Caixa" class="form-control" />
+                <span asp-validation-for="Caixa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Folha" class="control-label"></label>
+                <input asp-for="Folha" class="form-control" />
+                <span asp-validation-for="Folha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vitamina" class="control-label"></label>
+                <input asp-for="Vitamina" class="form-control" />
+                <span asp-validation-for="Vitamina" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lecitina" class="control-label"></label>
+                <input asp-for="Lecitina" class="form-control" />
+                <span asp-validation-for="Lecitina" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fita" class="control-label"></label>
+                <input asp-for="Fita" class="form-control" />
+                <span asp-validation-for="Fita" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bandeja" class="control-label"></label>
+                <input asp-for="Bandeja" class="form-control" />
+                <span asp-validation-for="Bandeja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Energia" class="control-label"></label>
+                <input asp-for="Energia" class="form-control" />
+                <span asp-validation-for="Energia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lenha" class="control-label"></label>
+                <input asp-for="Lenha" class="form-control" />
+                <span asp-validation-for="Lenha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Manutenção" class="control-label"></label>
+                <input asp-for="Manutenção" class="form-control" />
+                <span asp-validation-for="Manutenção" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PorcentagemVendedor" class="control-label"></label>
+                <input asp-for="PorcentagemVendedor" class="form-control" />
+                <span asp-validation-for="PorcentagemVendedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PorcentagemLucro" class="control-label"></label>
+                <input asp-for="PorcentagemLucro" class="form-control" />
+                <span asp-validation-for="PorcentagemLucro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustoFixo" class="control-label"></label>
+                <input asp-for="CustoFixo" class="form-control" />
+                <span asp-validation-for="CustoFixo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

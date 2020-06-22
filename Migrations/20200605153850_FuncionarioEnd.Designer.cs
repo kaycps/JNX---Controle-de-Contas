@@ -3,14 +3,16 @@ using System;
 using ControleFaturamentoJnx.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ControleFaturamentoJnx.Migrations
 {
     [DbContext(typeof(ControleFaturamentoContext))]
-    partial class ControleFaturamentoContextModelSnapshot : ModelSnapshot
+    [Migration("20200605153850_FuncionarioEnd")]
+    partial class FuncionarioEnd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -288,29 +290,6 @@ namespace ControleFaturamentoJnx.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PrecoCusto");
-                });
-
-            modelBuilder.Entity("ControleFaturamentoJnx.Models.Producao", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Data")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Peso")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("Quantidade")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Tipo")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Producao");
                 });
 
             modelBuilder.Entity("ControleFaturamentoJnx.Models.TipoCusto", b =>

@@ -1,0 +1,71 @@
+﻿@model ControleFaturamentoJnx.Models.VariaveisDeCalculo
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>VariaveisDeCalculo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Pis" class="control-label"></label>
+                <input asp-for="Pis" class="form-control" />
+                <span asp-validation-for="Pis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Confins" class="control-label"></label>
+                <input asp-for="Confins" class="form-control" />
+                <span asp-validation-for="Confins" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fgts" class="control-label"></label>
+                <input asp-for="Fgts" class="form-control" />
+                <span asp-validation-for="Fgts" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Inss" class="control-label"></label>
+                <input asp-for="Inss" class="form-control" />
+                <span asp-validation-for="Inss" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComissaoVendedor" class="control-label"></label>
+                <input asp-for="ComissaoVendedor" class="form-control" />
+                <span asp-validation-for="ComissaoVendedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Icms" class="control-label"></label>
+                <input asp-for="Icms" class="form-control" />
+                <span asp-validation-for="Icms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FreteVenda" class="control-label"></label>
+                <input asp-for="FreteVenda" class="form-control" />
+                <span asp-validation-for="FreteVenda" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FreteCompra" class="control-label"></label>
+                <input asp-for="FreteCompra" class="form-control" />
+                <span asp-validation-for="FreteCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProducaoMensal" class="control-label"></label>
+                <input asp-for="ProducaoMensal" class="form-control" />
+                <span asp-validation-for="ProducaoMensal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

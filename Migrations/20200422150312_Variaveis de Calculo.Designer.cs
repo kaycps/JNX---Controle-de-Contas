@@ -3,14 +3,16 @@ using System;
 using ControleFaturamentoJnx.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ControleFaturamentoJnx.Migrations
 {
     [DbContext(typeof(ControleFaturamentoContext))]
-    partial class ControleFaturamentoContextModelSnapshot : ModelSnapshot
+    [Migration("20200422150312_Variaveis de Calculo")]
+    partial class VariaveisdeCalculo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,41 +102,6 @@ namespace ControleFaturamentoJnx.Migrations
                     b.ToTable("Enderecos");
                 });
 
-            modelBuilder.Entity("ControleFaturamentoJnx.Models.EnderecoFuncionario", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Bairro")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Cep")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Cidade")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Estado")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("FuncionarioId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Numero")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Rua")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("FuncionarioId")
-                        .IsUnique();
-
-                    b.ToTable("EnderecoFuncionarios");
-                });
-
             modelBuilder.Entity("ControleFaturamentoJnx.Models.Fatura", b =>
                 {
                     b.Property<int>("ID")
@@ -167,29 +134,6 @@ namespace ControleFaturamentoJnx.Migrations
                     b.HasIndex("ClienteID");
 
                     b.ToTable("Faturas");
-                });
-
-            modelBuilder.Entity("ControleFaturamentoJnx.Models.Funcionario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Ativo")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<DateTime>("DataAdimissao")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Nome")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<double>("Salario")
-                        .HasColumnType("double");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Funcionarios");
                 });
 
             modelBuilder.Entity("ControleFaturamentoJnx.Models.Login", b =>
@@ -290,29 +234,6 @@ namespace ControleFaturamentoJnx.Migrations
                     b.ToTable("PrecoCusto");
                 });
 
-            modelBuilder.Entity("ControleFaturamentoJnx.Models.Producao", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Data")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Peso")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("Quantidade")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Tipo")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Producao");
-                });
-
             modelBuilder.Entity("ControleFaturamentoJnx.Models.TipoCusto", b =>
                 {
                     b.Property<int>("ID")
@@ -379,15 +300,6 @@ namespace ControleFaturamentoJnx.Migrations
                     b.HasOne("ControleFaturamentoJnx.Models.Cliente", "Cliente")
                         .WithOne("Endereco")
                         .HasForeignKey("ControleFaturamentoJnx.Models.Endereco", "ClienteID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ControleFaturamentoJnx.Models.EnderecoFuncionario", b =>
-                {
-                    b.HasOne("ControleFaturamentoJnx.Models.Funcionario", "Funcionario")
-                        .WithOne("EnderecoFuncionario")
-                        .HasForeignKey("ControleFaturamentoJnx.Models.EnderecoFuncionario", "FuncionarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

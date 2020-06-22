@@ -1,0 +1,36 @@
+﻿@model ControleFaturamentoJnx.Models.Login
+@Html.ValidationSummary()
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_LayoutLogin";
+}
+
+<img class="mb-4" src="~/img/logo.png" alt="" width="172" height="144">
+<h4 class="h3 mb-3 font-weight-normal">Sign in</h4>
+<hr />
+<div class="form-signin">
+    <div class="col-md-12">
+        <form asp-action="Login">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Usuario" class="form-control" placeholder="Usuario" type="text" />
+                <span asp-validation-for="Usuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Senha" class="form-control" placeholder="Senha" type="password" />
+                <span asp-validation-for="Senha" class="text-danger"></span>
+            </div>
+            <div class="form-group ">
+               
+                <input type="submit" value="Logar" class="btn btn-primary btn-lg btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Trocar Senha</a>
+</div>
+

@@ -8,25 +8,24 @@ using Microsoft.EntityFrameworkCore;
 using ControleFaturamentoJnx.Data;
 using ControleFaturamentoJnx.Models;
 
-namespace ControleFaturamentoJnx.Views
+namespace ControleFaturamentoJnx.Controllers
 {
-    public class ParcelaController : Controller
+    public class VariaveisDeCalculoController : Controller
     {
         private readonly ControleFaturamentoContext _context;
 
-        public ParcelaController(ControleFaturamentoContext context)
+        public VariaveisDeCalculoController(ControleFaturamentoContext context)
         {
             _context = context;
         }
 
-        // GET: Parcela
+        // GET: VariaveisDeCalculoes
         public async Task<IActionResult> Index()
         {
-            var controleFaturamentoContext = _context.Parcelas.Include(p => p.Fatura).AsNoTracking().OrderBy(p=>p.Vencimento.Date);
-            return View(await controleFaturamentoContext.ToListAsync());
+            return View(await _context.VariaveisDeCalculo.ToListAsync());
         }
 
-        // GET: Parcela/Details/5
+        // GET: VariaveisDeCalculoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,42 +33,39 @@ namespace ControleFaturamentoJnx.Views
                 return NotFound();
             }
 
-            var parcela = await _context.Parcelas
-                .Include(p => p.Fatura)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (parcela == null)
+            var variaveisDeCalculo = await _context.VariaveisDeCalculo
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (variaveisDeCalculo == null)
             {
                 return NotFound();
             }
 
-            return View(parcela);
+            return View(variaveisDeCalculo);
         }
 
-        // GET: Parcela/Create
+        // GET: VariaveisDeCalculoes/Create
         public IActionResult Create()
         {
-            ViewData["FaturaID"] = new SelectList(_context.Faturas, "ID", "Numero");
             return View();
         }
 
-        // POST: Parcela/Create
+        // POST: VariaveisDeCalculoes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,ValorParcela,Vencimento,Status,FaturaID")] Parcela parcela)
+        public async Task<IActionResult> Create([Bind("Id,Pis,Confins,Fgts,Inss,ComissaoVendedor,Icms,FreteVenda,FreteCompra,ProducaoMensal")] VariaveisDeCalculo variaveisDeCalculo)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(parcela);
+                _context.Add(variaveisDeCalculo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FaturaID"] = new SelectList(_context.Faturas, "ID", "ID", parcela.FaturaID);
-            return View(parcela);
+            return View(variaveisDeCalculo);
         }
 
-        // GET: Parcela/Edit/5
+        // GET: VariaveisDeCalculoes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,23 +73,22 @@ namespace ControleFaturamentoJnx.Views
                 return NotFound();
             }
 
-            var parcela = await _context.Parcelas.FindAsync(id);
-            if (parcela == null)
+            var variaveisDeCalculo = await _context.VariaveisDeCalculo.FindAsync(id);
+            if (variaveisDeCalculo == null)
             {
                 return NotFound();
             }
-            ViewData["FaturaID"] = new SelectList(_context.Faturas, "ID", "Numero", parcela.FaturaID);
-            return View(parcela);
+            return View(variaveisDeCalculo);
         }
 
-        // POST: Parcela/Edit/5
+        // POST: VariaveisDeCalculoes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,ValorParcela,Vencimento,Status,FaturaID")] Parcela parcela)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Pis,Confins,Fgts,Inss,ComissaoVendedor,Icms,FreteVenda,FreteCompra,ProducaoMensal")] VariaveisDeCalculo variaveisDeCalculo)
         {
-            if (id != parcela.ID)
+            if (id != variaveisDeCalculo.Id)
             {
                 return NotFound();
             }
@@ -102,12 +97,12 @@ namespace ControleFaturamentoJnx.Views
             {
                 try
                 {
-                    _context.Update(parcela);
+                    _context.Update(variaveisDeCalculo);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ParcelaExists(parcela.ID))
+                    if (!VariaveisDeCalculoExists(variaveisDeCalculo.Id))
                     {
                         return NotFound();
                     }
@@ -118,11 +113,10 @@ namespace ControleFaturamentoJnx.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FaturaID"] = new SelectList(_context.Faturas, "ID", "ID", parcela.FaturaID);
-            return View(parcela);
+            return View(variaveisDeCalculo);
         }
 
-        // GET: Parcela/Delete/5
+        // GET: VariaveisDeCalculoes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,31 +124,30 @@ namespace ControleFaturamentoJnx.Views
                 return NotFound();
             }
 
-            var parcela = await _context.Parcelas
-                .Include(p => p.Fatura)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (parcela == null)
+            var variaveisDeCalculo = await _context.VariaveisDeCalculo
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (variaveisDeCalculo == null)
             {
                 return NotFound();
             }
 
-            return View(parcela);
+            return View(variaveisDeCalculo);
         }
 
-        // POST: Parcela/Delete/5
+        // POST: VariaveisDeCalculoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var parcela = await _context.Parcelas.FindAsync(id);
-            _context.Parcelas.Remove(parcela);
+            var variaveisDeCalculo = await _context.VariaveisDeCalculo.FindAsync(id);
+            _context.VariaveisDeCalculo.Remove(variaveisDeCalculo);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ParcelaExists(int id)
+        private bool VariaveisDeCalculoExists(int id)
         {
-            return _context.Parcelas.Any(e => e.ID == id);
+            return _context.VariaveisDeCalculo.Any(e => e.Id == id);
         }
     }
 }

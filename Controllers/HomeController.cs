@@ -26,6 +26,7 @@ namespace ControleFaturamentoJnx.Controllers
 
         public IActionResult Index()
         {
+            
             //Buscando os valores ganhos no mes e os valores ganhos em total
             var ValorParcelasMesPago = _context.Parcelas
                              .Where(p => p.Status.Equals("Pago") && p.Vencimento.Month.Equals(DateTime.Now.Month) &&
@@ -61,16 +62,16 @@ namespace ControleFaturamentoJnx.Controllers
                 valorMesPendente = ValorParcelaMesPendente.Sum(p => p.ValorParcela), 
                 valorMesTotalPendente = ValorParcelaTotalPendente.Sum(p => p.ValorParcela);          
 
-            ViewBag.ParcelaMesPago = valorMesPago.ToString("F");
+            ViewBag.ParcelaMesPago = valorMesPago;
             ViewBag.ParcelaTotalPago = valorMesTotalPAgo;
-            ViewBag.ParcelaMesPendente = valorMesPendente.ToString("F");
+            ViewBag.ParcelaMesPendente = valorMesPendente;
             ViewBag.ParcelaTotalPendente = valorMesTotalPendente;
             ViewBag.FaturamentoMes = FaturamentoMes;
-            ViewBag.FaturamentoTotal = FaturamentoTotal.ToString("F");
+            ViewBag.FaturamentoTotal = FaturamentoTotal;
             ViewBag.DepesaMes = DespesaMes;
-            ViewBag.DespesaTotal = DespesaTotal.ToString("F");
-            ViewBag.Lucro = (FaturamentoTotal - DespesaTotal).ToString("F");
-            ViewBag.ParcelasVencidasMes = TotalParcelasVencidasMes.ToString("F");
+            ViewBag.DespesaTotal = DespesaTotal;
+            ViewBag.Lucro = FaturamentoTotal - DespesaTotal;
+            ViewBag.ParcelasVencidasMes = TotalParcelasVencidasMes;
 
             return View();
         }
@@ -164,7 +165,7 @@ namespace ControleFaturamentoJnx.Controllers
 
                     gerarPdf._document.Save(stream, false);
 
-                    var nomeArquivo = "Relatorio_Caixa" + DataInicial.Date.ToString("d") + "_" + DataFinal.Date.ToString("d") + ".pdf";
+                    var nomeArquivo = "Relatorio_Parcelas" + DataInicial.Date.ToString("d") + "_" + DataFinal.Date.ToString("d") + ".pdf";
 
                     return File(stream.ToArray(), contantType, nomeArquivo);
                 }

@@ -1,0 +1,287 @@
+﻿@model IEnumerable<ControleFaturamentoJnx.Models.PrecoCusto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-money-coins text-success"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category">Preço de Custo - KG</p>
+                                <p class="card-title">@ViewBag.precoCustoKg
+                                <p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-chart-bar-32 text-warning"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category">Preço de Venda/Kg - Sem frete</p>
+                                <p class="card-title">@ViewBag.custoTotalKg
+                                <p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-chart-bar-32 text-warning"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category">Preço de Venda/Kg - Com Frete</p>
+                                <p class="card-title">@ViewBag.precoTotalKgFrete
+                                <p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+<div class="row">
+
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-money-coins text-warning"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Preco de Custo/400G</p>
+                            <p class="card-title">@ViewBag.precoCusto400
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-simple-remove text-danger"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Preco de Venda/400g - Sem Frete</p>
+                            <p class="card-title">@ViewBag.precoTotal400
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-simple-remove text-danger"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Preco de Venda/400g - Com Frete</p>
+                            <p class="card-title">@ViewBag.precoTotal400Frete
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Preços Atuais</h4>
+                </div>
+                <div class="card-body">
+                    <table id="dtBasicExample" class="table table-bordered table-striped table-hover responsive">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Peso)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Trigo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Embalagem)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Caixa)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Folha)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Vitamina)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Lecitina)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Fita)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Bandeja)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Energia)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Lenha)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Manutenção)
+                                </th>
+                                <th>
+                                    %Venderdor
+                                </th>
+                                <th>
+                                    %Lucro
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CustoFixo)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Peso)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Trigo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Embalagem)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Caixa)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Folha)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Vitamina)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Lecitina)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Fita)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Bandeja)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Energia)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Lenha)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Manutenção)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PorcentagemVendedor)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PorcentagemLucro)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CustoFixo)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#dtBasicExample').DataTable({
+                'paging': true,
+                'lengthChange': true,
+                'searching': true,
+                'ordering': true,
+                'autoWidth': false,
+                'scrollX': true,
+                "language": {
+                    "lengthMenu": "Exibe _MENU_ Registros por página",
+                    "search": "Procurar",
+                    "paginate": { "previous": "Retorna", "next": "Avança" },
+                    "zeroRecords": "Nada foi encontrado",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Sem registros",
+                    "infoFiltered": "(filtrado de _MAX_ regitros totais)"
+                },
+            });
+        });
+    </script>
+}

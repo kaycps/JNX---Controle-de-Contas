@@ -36,7 +36,11 @@ namespace ControleFaturamentoJnx.Data
             mb.Entity<Despesa>()
                 .HasOne<TipoCusto>(d => d.TipoCusto)
                 .WithMany(d => d.Despesas)
-                .HasForeignKey(d => d.TipoCustoID);               
+                .HasForeignKey(d => d.TipoCustoID);
+
+            mb.Entity<EnderecoFuncionario>()
+                .HasOne<Funcionario>(f => f.Funcionario)
+                .WithOne(e=>e.EnderecoFuncionario);
                 
 
         }
@@ -47,7 +51,13 @@ namespace ControleFaturamentoJnx.Data
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<ControleFaturamentoJnx.Models.Despesa> Despesa { get; set; }
         public DbSet<ControleFaturamentoJnx.Models.TipoCusto> TipoCusto { get; set; }
-       
-        
+        public DbSet<ControleFaturamentoJnx.Models.Login> Login { get; set; }
+        public DbSet<ControleFaturamentoJnx.Models.PrecoCusto> PrecoCusto { get; set; }
+        public DbSet<ControleFaturamentoJnx.Models.VariaveisDeCalculo> VariaveisDeCalculo { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<EnderecoFuncionario> EnderecoFuncionarios { get; set; }
+        public DbSet<ControleFaturamentoJnx.Models.Producao> Producao { get; set; }
+
+
     }
 }

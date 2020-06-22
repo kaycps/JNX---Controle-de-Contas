@@ -31,11 +31,13 @@ namespace ControleFaturamentoJnx
             services.AddDbContextPool<ControleFaturamentoContext>(options => options.
                 UseMySql("Server=localhost;Database=controle_faturamento_jnx;User=root;Password=160494;",
                 mySqlOptions => mySqlOptions.ServerVersion(new ServerVersion(new Version(8, 0, 3), ServerType.MySql))));
-
+           
             services.AddMemoryCache();
             services.AddSession(options =>
             {
-
+                options.IdleTimeout = TimeSpan.FromSeconds(300);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
             });
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,7 +65,7 @@ namespace ControleFaturamentoJnx
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=Login}/{id?}");
             });
         }
     }

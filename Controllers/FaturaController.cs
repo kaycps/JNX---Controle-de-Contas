@@ -24,7 +24,7 @@ namespace ControleFaturamentoJnx.Views
         // GET: Fatura
         public async Task<IActionResult> Index()
         {
-            var controleFaturamentoContext = _context.Faturas.Include(f => f.Cliente).AsNoTracking();
+            var controleFaturamentoContext = _context.Faturas.Include(f => f.Cliente).AsNoTracking().OrderBy(f=>f.DataEmissao);
             return View(await controleFaturamentoContext.ToListAsync());
         }
 

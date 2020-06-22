@@ -82,12 +82,8 @@ namespace ControleFaturamentoJnx.Views.Shared
                 textFormatter.DrawString(item.Fatura.Cliente.Nome.ToString(), fonteConteudo, corFonte, new PdfSharpCore.Drawing.XRect(
                                 300, Altura, Page.Width, Page.Height));
             }
-            if (item.Fatura.Numero != null)
-            {
-                textFormatter.DrawString(item.Fatura.Numero.ToString(), fonteConteudo, corFonte, new PdfSharpCore.Drawing.XRect(
+            textFormatter.DrawString(item.Fatura.Numero.ToString(), fonteConteudo, corFonte, new PdfSharpCore.Drawing.XRect(
                                 400, Altura, Page.Width, Page.Height));
-            }
-            
 
         }
         public void EscreverParcelaPendenteTags(int Altura)
@@ -128,12 +124,8 @@ namespace ControleFaturamentoJnx.Views.Shared
                                 300, Altura + 70, Page.Width, Page.Height));
             }
 
-            if (item.Fatura.Numero != null)
-            {
-                textFormatter.DrawString(item.Fatura.Numero.ToString(), fonteConteudo, corFonte, new PdfSharpCore.Drawing.XRect(
+            textFormatter.DrawString(item.Fatura.Numero.ToString(), fonteConteudo, corFonte, new PdfSharpCore.Drawing.XRect(
                                 400, Altura + 70, Page.Width, Page.Height));
-            }
-            
 
         }
         public void EscreverParcelaVencidaTags(int Altura)

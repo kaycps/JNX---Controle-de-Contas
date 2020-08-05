@@ -2,21 +2,23 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+
     <title>@ViewBag.Title</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="~/img/logo.png">
 
     <!-- Bootstrap core CSS -->
     <link href="~/Template/assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="~/Login/css/signin.css" rel="stylesheet">
+
+    <link href="~/img/logo.png" rel="stylesheet">
 </head>
 <body class="text-center">
     <div class="">
         @RenderBody()
+
     </div>
 </body>
+@RenderSection("Scripts", required:false)
 </html>

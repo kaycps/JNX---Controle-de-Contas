@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ControleFaturamentoJnx.Data;
 using ControleFaturamentoJnx.Models;
-
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace ControleFaturamentoJnx.Controllers
 {
+    [Authorize]
     public class PrecoCustosController : Controller
     {
         private  ControleFaturamentoContext _context;

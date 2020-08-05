@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using ControleFaturamentoJnx.Data;
 using ControleFaturamentoJnx.Models;
 using ControleFaturamentoJnx.Views.Shared.Enum;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ControleFaturamentoJnx.Views
 {
+    [Authorize]
     public class FaturaController : Controller
     {
         private readonly ControleFaturamentoContext _context;

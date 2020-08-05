@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ControleFaturamentoJnx.Data;
 using ControleFaturamentoJnx.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ControleFaturamentoJnx.Controllers
 {
+    [Authorize]
     public class FuncionarioController : Controller
     {
         private readonly ControleFaturamentoContext _context;

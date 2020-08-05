@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ControleFaturamentoJnx.Areas.Identity.Data;
 using ControleFaturamentoJnx.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,14 +33,11 @@ namespace ControleFaturamentoJnx
             services.AddDbContextPool<ControleFaturamentoContext>(options => options.
                 UseMySql("Server=localhost;Database=controle_faturamento_jnx;User=root;Password=160494;",
                 mySqlOptions => mySqlOptions.ServerVersion(new ServerVersion(new Version(8, 0, 3), ServerType.MySql))));
-           
-            services.AddMemoryCache();
-            services.AddSession(options =>
-            {
-                options.IdleTimeout = TimeSpan.FromSeconds(300);
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
-            });
+
+            
+
+            services.AddSession();
+            services.AddRazorPages();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -58,6 +57,7 @@ namespace ControleFaturamentoJnx
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseSession();
 
@@ -65,7 +65,9 @@ namespace ControleFaturamentoJnx
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Login}/{action=Login}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+
             });
         }
     }

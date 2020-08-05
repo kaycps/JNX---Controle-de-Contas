@@ -11,9 +11,12 @@ using System.IO;
 using Microsoft.EntityFrameworkCore;
 using ControleFaturamentoJnx.Views.Shared.Enum;
 using ControleFaturamentoJnx.Views.Shared;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace ControleFaturamentoJnx.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

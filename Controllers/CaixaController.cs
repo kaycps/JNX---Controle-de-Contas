@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using ControleFaturamentoJnx.Data;
 using ControleFaturamentoJnx.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ControleFaturamentoJnx.Controllers
 {
+    [Authorize]
     public class CaixaController : Controller
     {
         private ControleFaturamentoContext _context;
